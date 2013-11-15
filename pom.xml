@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 	<groupId>redis.clients</groupId>
 	<artifactId>jedis</artifactId>
-	<version>2.2.1</version>
+	<version>2.2.1-WN1</version>
 	<name>Jedis</name>
 	<description>Jedis is a blazingly small and sane Redis java client.</description>
   <url>https://github.com/xetorthio/jedis</url>
@@ -69,9 +69,9 @@
 
   <distributionManagement>
       <repository>
-          <id>github</id>
-          <name>GitHub ${project.artifactId} Repository</name>
-          <url>https://raw.github.com/xetorthio/${project.artifactId}/mvn-repo</url>
+        <id>com.wordnik</id>
+        <name>Wordnik Repository</name>
+        <url>https://ci.aws.wordnik.com/artifactory/m2-releases/</url>
       </repository>
   </distributionManagement>
 
