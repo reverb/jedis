@@ -2786,7 +2786,7 @@ public class Jedis extends BinaryJedis implements JedisCommands, MultiKeyCommand
 	if(result == null) return null;
 
 	if (result instanceof byte[])
-	    return SafeEncoder.encode((byte[]) result);
+	    return result;//SafeEncoder.encode((byte[]) result);
 
 	if (result instanceof List<?>) {
 	    List<?> list = (List<?>) result;
