@@ -1,14 +1,15 @@
 package redis.clients.jedis;
 
-import redis.clients.jedis.BinaryClient.LIST_POSITION;
-
 import java.util.Map;
+
+import redis.clients.jedis.BinaryClient.LIST_POSITION;
 
 public interface Commands {
 
     public void set(final String key, final String value);
 
-    public void set(final String key, final String value, final String nxxx, final String expx, final long time);
+    public void set(final String key, final String value, final String nxxx,
+	    final String expx, final long time);
 
     public void get(final String key);
 
@@ -60,6 +61,8 @@ public interface Commands {
 
     public void incrBy(final String key, final long integer);
 
+    public void incrByFloat(final String key, final double value);
+
     public void incr(final String key);
 
     public void append(final String key, final String value);
@@ -77,6 +80,8 @@ public interface Commands {
     public void hmget(final String key, final String... fields);
 
     public void hincrBy(final String key, final String field, final long value);
+
+    public void hincrByFloat(final String key, final String field, final double value);
 
     public void hexists(final String key, final String field);
 
@@ -143,7 +148,7 @@ public interface Commands {
 
     public void zadd(final String key, final double score, final String member);
 
-    public void zadd(final String key, final Map<Double, String> scoreMembers);
+    public void zadd(final String key, final Map<String, Double> scoreMembers);
 
     public void zrange(final String key, final long start, final long end);
 
@@ -295,4 +300,46 @@ public interface Commands {
     public void bitcount(final String key, long start, long end);
 
     public void bitop(BitOP op, final String destKey, String... srcKeys);
+
+    @Deprecated
+    /**
+     * This method is deprecated due to bug (scan cursor should be unsigned long)
+     * And will be removed on next major release
+     * @see https://github.com/xetorthio/jedis/issues/531 
+     */
+    public void scan(int cursor, final ScanParams params);
+
+    @Deprecated
+    /**
+     * This method is deprecated due to bug (scan cursor should be unsigned long)
+     * And will be removed on next major release
+     * @see https://github.com/xetorthio/jedis/issues/531 
+     */
+    public void hscan(final String key, int cursor, final ScanParams params);
+
+    @Deprecated
+    /**
+     * This method is deprecated due to bug (scan cursor should be unsigned long)
+     * And will be removed on next major release
+     * @see https://github.com/xetorthio/jedis/issues/531 
+     */
+    public void sscan(final String key, int cursor, final ScanParams params);
+
+    @Deprecated
+    /**
+     * This method is deprecated due to bug (scan cursor should be unsigned long)
+     * And will be removed on next major release
+     * @see https://github.com/xetorthio/jedis/issues/531 
+     */
+    public void zscan(final String key, int cursor, final ScanParams params);
+
+    public void scan(final String cursor, final ScanParams params);
+
+    public void hscan(final String key, final String cursor, final ScanParams params);
+
+    public void sscan(final String key, final String cursor, final ScanParams params);
+
+    public void zscan(final String key, final String cursor, final ScanParams params);
+    
+    public void waitReplicas(int replicas, long timeout);
 }

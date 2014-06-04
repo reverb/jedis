@@ -1,6 +1,5 @@
 package redis.clients.jedis;
 
-
 import java.util.List;
 
 /**
@@ -27,6 +26,8 @@ public interface BasicRedisPipeline {
     Response<String> flushAll();
 
     Response<String> info();
+    
+    Response<List<String>> time();
 
     Response<Long> dbSize();
 

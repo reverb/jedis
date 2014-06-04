@@ -9,4 +9,6 @@ target/
 build/
 bin/
 tags
-dump.rdb
+.idea
+*.aof
+*.rdb
